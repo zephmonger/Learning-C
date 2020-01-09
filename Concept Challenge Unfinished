@@ -1,0 +1,178 @@
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <math.h>
+
+
+void hello();
+void tellMeBoutYourself();
+void menyu();
+void minMax();
+void goBack();
+void addingEven();
+
+
+int main() {
+	
+	menyu();
+	
+
+
+	system("pause");
+	return 0;
+}
+
+void goBack() {
+
+	int xx = 0;
+	printf("Press 1 to go back to menu or 0 to exit\n");
+	scanf("%d", &xx);
+	if (xx == 1) {
+		menyu();
+	}
+	else {
+		exit(0);
+	}
+}
+
+void menyu() {
+
+	int menyu;
+	printf("Please choose an option :)\n\n");
+
+	printf("1- Hello World\n");//Print a simple hello world
+	printf("2- Age, name and country\n");//Get information from the user to display "Hello [name], you are [years] old and you live in [Canada]"
+	printf("3- Min, Max and Average\n");//Receive 3 numbers from user and calculate Min, Max and Average
+	printf("4- Add even numbers\n");//Receive 2 numbers and calculate all even numbers in between them
+	printf("5- Grades\n");//Receive 3 grades and output if a student passed [>= 60 average]
+	printf("6- Calculate power of two\n");
+	printf("7- Calculate square root\n");
+	printf("0- Exit\n");
+	
+	scanf("%d", &menyu);
+	
+
+	switch (menyu) {
+
+	case 1:
+		hello();
+		break;
+	case 2:
+		tellMeBoutYourself();
+
+		break;
+	case 3:
+		minMax();
+
+		break;
+	case 4:
+		addingEven();
+
+		break;
+	case 5:
+
+		break;
+	case 6:
+
+		break;
+	case 7:
+
+		break;
+
+	default:
+		exit(0);
+		break;
+
+	}
+}
+
+void hello() {
+
+	
+	printf("Ola Mundo!\n");
+
+	goBack();
+}
+
+void tellMeBoutYourself() {
+	int age;
+	char name[20];
+	char country[20];
+
+
+	printf("Hello, User. What is your name?\n");
+	scanf("%s", &name);
+	printf("Good day %s. How old are you?\n", name);
+	scanf("%d", &age);
+	printf("Now to finish things off %s, which country do you live in?\n", name);
+	scanf("%s", &country);
+	printf("Thanks for your co-operation %s. You are %d years old and you live in %s. Nice one, eh?\n", name, age, country);
+
+	goBack();
+	
+}
+
+void minMax() {
+	int x ;
+	int y ;
+	int z ;
+	int min = 0 ;
+	int max = 0;
+	int average = 0;
+
+	printf("please enter the First number\n");
+		scanf("%d", &x);
+
+	printf("please enter the Second number\n");
+		scanf("%d", &y);
+
+	printf("please enter the Third number\n");
+		scanf("%d", &z);
+
+
+		if (x < y && x < z) {
+			min = x;
+		}
+		 if (x > y && x > z) {
+			max = x;
+		}
+		 if (y < x && y < z) {
+			min = y;
+		}
+		 if (y > x && y > z) {
+			max = y;
+		}
+		 if (z > x && z > y) {
+			max = z;
+		}
+		 if (z < x && z < y) {
+			min = z;
+		}
+
+		average = (x + y + z) / 3;
+
+		printf("\nYour min is %d, your max is %d, and your average is %d!!\n", min, max, average);
+
+
+		goBack();
+}
+
+void addingEven(int a, int b) {
+	int sum;
+
+	printf("Please enter your first number!\n");
+		scandf("%d", &a);
+
+	printf("Please enter your second number\n");
+		scanf("%d", &b);
+
+
+		if (a % 2 == 0) {
+
+	}
+
+
+
+
+}
