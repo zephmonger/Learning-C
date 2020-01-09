@@ -1,0 +1,162 @@
+#include <math.h>
+#include <stdbool.h>
+#include <string.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+/*Your program has to have hotkey menu for reservation and cancellation(10 Marks)
+Your program should be capable of reserving and canceling seats in each plane.
+This Airline only uses two types of aircrafts : Airbus 300A and Boeing 747
+Both aircrafts have three different sections, First Class, Business Class and Economy Class.
+The first five rows of both aircraft is considered First class, there is 4 seats in each row
+Boeing 747 has a second floor with 5 rows that is also considered first class and has 4 seats in each row.
+Row 6 to 11 for both aircrafts is considered business class and there are 6 seats available in each row
+Rows 12 to 35 in Airbus and 12 to 45 in Boeing is Economy class, there are 10 seats in Economy class.
+Your program should provide sections with options for reserving a seat, canceling a reservation and showing the list of occupied and free seats.(45 marks)
+You should provide different functions for each item. (15 marks)
+As soon as you reserve a seat it should change its status to unavailable. (10 marks)
+As soon as you cancel the reservation of a seat it should change its status to available(10 marks)
+Showing option should Show the list of available or unavailable seats(up to you how you want to implement).(10 marks)
+You can use multiple arrays or multiple dimension arrays to do this assignment.*/
+
+void menu();
+void Boing747();
+void Airbus300A();
+
+int main() {
+
+	menu();
+
+	system("pause");
+
+}
+
+void menu() {
+
+	
+
+	puts("\n\n****************************\n");
+	puts("*************M *************\n");
+	puts("************* E*************\n");
+	puts("*************N *************\n");
+	puts("************* U*************\n");
+	puts("****************************\n");
+
+	printf("Welcome to Air We'll Get You There in Maybe One Piece!\n");
+	puts("Please enter a number to see furhter details in said choice\n");
+	printf("1- Make a reservation on Airbus 300A\n");
+	printf("2- Make a reservation on Boeing 747\n");
+	printf("3- Make a First Class reservation\n");
+	printf("4- Make a Business Class reservation\n");
+	printf("5- Make an Economy Class reservation\n");
+	printf("6- Make a reservation on ing 747\n");
+	printf("7- Make a reservation on g 747\n");
+	printf("8- Make a reservation on Boeing 747\n");
+	printf("9- Make a reservation on Boeing 747\n");
+	printf("10- Make a reservation oneing 747\n");
+	printf("11- Make a reservation on Boeing 747\n");
+	printf("12- Make a reservation on Boei47\n");
+	printf("13- Make a reservation on Boeing 747\n");
+	printf("14- Make a reservation on Boeing 747\n");
+	printf("15- Make a reservation ong 747\n");
+	printf("16- Make a reservation on Boeing 747\n");
+	printf("17- Make a reservation on Boeing 747\n");
+
+	int option;
+
+	scanf("%d", &option);
+	
+
+	switch (option) {
+	case 1:
+
+
+		break;
+	case 2:
+
+
+		break;
+	case 3:
+
+
+		break;
+	case 4:
+
+
+		break;
+	case 5:
+
+
+		break;
+	case 6:
+
+
+		break;
+	case 7:
+
+
+		break;
+	case 8:
+
+
+		break;
+	case 9:
+
+
+		break;
+	case 10:
+
+
+		break;
+	case 11:
+
+
+		break;
+	case 12:
+
+
+		break;
+	case 13:
+
+
+		break;
+	case 14:
+
+
+		break;
+	case 15:
+
+
+		break;
+	case 16:
+
+
+		break;
+	case 17:
+
+
+		break;
+
+
+
+
+
+	default:
+		exit(0);
+		break;
+
+	}
+
+}
+
+void Airbus300A() {
+
+
+
+}
+
+void Boing747() {
+
+
+}
