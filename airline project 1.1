@@ -1,0 +1,250 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <stdbool.h>
+#include "Prototype.h"
+
+void menu() {
+
+
+    puts("\n\t\t     **********************\n");
+    puts("\t\t\t***  Welcome    *********\n");
+    puts("\t\t\t****** To     *********\n");
+    puts("\t\t\t****  Cloud 9 *****\n");
+    puts("\t\t\t**********************\n");
+    puts("\t\t\t**********************\n");
+    puts("      **********************\n");
+    puts("\n");
+    puts("********\n");
+    puts("**\tProject By:\t    **\n");
+    puts("**\tRamin Tajwanchi\t    **\n");
+    puts("\t\t      ********\n");
+           
+    puts("\n");
+    puts("\n");
+    
+
+    puts("***  Please make a selection from the following options  ***\n");
+    puts("\n");
+    puts(" 1 - Booking a Seat on Airbus 300A\n");
+    puts(" 2 - Booking a Seat on Boeing 747\n");
+    puts(" 3 - To cancel a reservation on Airbus 300A\n");
+    puts(" 4 - To cancel a reservation on Boeing 747\n");
+    puts(" 5 - View Booked and available seating\n");
+    puts(" 6 - \n");
+    puts("\n");
+    puts("\n");
+    puts("\n");
+    puts("Press 0 to Exit\n");
+
+    int choice = 0;
+    scanf("%d", &choice);
+
+
+    switch (choice) {
+    case 1: booking300A(); break;
+    case 2: booking747(); break;
+    case 3: cancel300A(); break;
+    case 4: cancel747(); break;
+    case 5: viewSeatingPlan(); break;
+
+    default :
+        exit(0);
+        break;
+    }
+
+
+ }
+
+//BOOKING ON AIRBUS 300A START
+void booking300A() {
+    int xx = 0;
+    
+    puts("\nYou are currently in the Booking for Airbus 300A menu\n");
+    puts("\n\nTo Book a ticket on Airbus300A:\n 1 - First Class\n 2 - Business Class\n 3 - Economy Class\n");
+    puts("");
+    puts("Enter 9 to go back to menu\n");
+    puts("Enter 0 to exit\n");
+    scanf("%d", &xx);
+
+    switch (xx) {
+    case 1: airbusFirstBooking();
+    case 2: airbusBusinessBooking();
+    case 3: airbusEconomyBooking();
+
+
+    case 9: menu();
+    default:
+        exit(0);
+        break;
+
+    }
+
+}
+
+void airbusFirstBooking() {
+
+
+}
+
+void airbusBusinessBooking() {
+
+
+}
+
+void airbusEconomyBooking() {
+
+
+}
+//BOOKING ON AIRBUS 300A END
+
+
+//BOOKING ON BOEING 747 START
+void booking747() {
+    int xx = 0;
+
+    puts("\nYou are currently in the Booking BOEING 747 menu\n");
+    puts("\n\nTo Book a ticket on Boeing 747:\n 1 - First Class on the First Floor\n 2 - First Class on the Second Floor\n 3 - Business Class\n 4 - Economy Class\n");
+    puts("");
+    puts("Enter 9 to go back to menu\n");
+    puts("Enter 0 to exit\n");
+    scanf("%d", &xx);
+
+    switch (xx) {
+    case 1:
+
+
+    case 9: menu();
+    default:
+        exit(0);
+        break;
+
+    }
+
+}
+
+
+//BOOKING ON BOEING 747 START
+void cancel300A() {
+    int xx = 0;
+
+    puts("\nYou are currently in the seat viewing menu\n");
+
+    puts("\n\nTo view Boeing 747:\n 4 - First Class on the First Floor\n 5 - First Class on the Second Floor\n 6 - Business Class\n 7 - Economy Class\n");
+    puts("");
+    puts("Enter 9 to go back to previous menu\n");
+    puts("Enter 0 to exit\n");
+    scanf("%d", &xx);
+
+    switch (xx) {
+    case 1:
+
+
+    case 9: menu();
+    default:
+        exit(0);
+        break;
+
+    }
+
+}
+
+void cancel747() {
+    int xx = 0;
+    puts("\nYou are currently in the seat viewing menu\n");
+    puts("\n\nTo view Airbus300A:\n 1 - First Class\n 2 - Business Class\n 3 - Economy Class\n");
+    puts("\n\nTo view Boeing 747:\n 4 - First Class on the First Floor\n 5 - First Class on the Second Floor\n 6 - Business Class\n 7 - Economy Class\n");
+    puts("");
+    puts("Enter 9 to go back to previous menu\n");
+    puts("Enter 0 to exit\n");
+    scanf("%d", &xx);
+
+    switch (xx) {
+    case 1:
+
+
+    case 9: menu();
+    default:
+        exit(0);
+        break;
+
+    }
+
+}
+
+void viewSeatingPlan() {
+    int xx = 0;
+
+    puts("\nYou are currently in the seat viewing menu\n");
+    puts("\n\nTo view Airbus300A:\n 1 - First Class\n 2 - Business Class\n 3 - Economy Class\n");
+    puts("\n\nTo view Boeing 747:\n 4 - First Class on the First Floor\n 5 - First Class on the Second Floor\n 6 - Business Class\n 7 - Economy Class\n");
+    puts("");
+    puts("Enter 9 to go back to previous menu\n");
+    puts("Enter 0 to exit\n");
+    scanf("%d", &xx);
+
+
+    switch (xx) {
+    case 1: airbusAFirstClass();
+    case 2: airbusABusinessClass();
+    case 3: airbusAEconomyClass();
+    case 4: boingFirstClassFirstFloor();
+    case 5: boingFirstClassSecondFloor();
+    case 6: boingBusinessClass();
+    case 7: boingEconomyClass();
+    case 9: menu();
+    default:
+        exit(0);
+        break;
+
+    }
+
+
+} 
+
+void airbusAFirstClass() {
+    int airbusFirst[5][4] = { 0 };
+
+
+}
+void airbusABusinessClass() {
+    int airbusBusiness[4][3] = { 0 };
+
+
+}
+void airbusAEconomyClass() {
+    int airbusEconomy[4][3] = { 0 };
+
+
+}
+
+void boingFirstClassFirstFloor() {
+    int airbusEconomy[5][4] = { 0 };
+
+
+
+}
+
+
+void boingFirstClassSecondFloor() {
+
+    int airbusEconomy[5][4] = { 0 };
+
+
+
+}
+void boingBusinessClass() {
+    int airbusFirst[4][3] = { 0 };
+
+
+
+}
+
+void boingEconomyClass() {
+    int airbusFirst[4][3] = { 0 };
+
+
+
+
+}
