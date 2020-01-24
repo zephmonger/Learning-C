@@ -1,0 +1,329 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <stdbool.h>
+//#include "Functions.c"
+
+ void menu();//Main menu
+
+
+ // Bookings in plane Airbus 300A START
+ 
+ void airbusFirstBooking();
+ void booking300A();
+
+ void airbusBusinessBooking();
+
+ void airbusEconomyBooking();
+
+ // Bookings in plane Airbus 300A END
+
+ void booking747();// Bookings in plane Boeing 747
+
+ void cancel300A();//Cancellng in plane Airbus 300A
+
+ void cancel747();//Cancellng in plane Boeing 747
+
+ void viewSeatingPlan();//Menu to open selection options for the planes and thier classes
+
+ void printArray(int arr[][], int size)//Array Printer
+
+
+
+ // ABOVE IS PROTOTYPES FOR THE FUCNTIONS BELOW
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <stdbool.h>
+#include "Prototype.h"
+#define Size1 5
+#define Size2 4
+
+
+int airbusAFirstClass[Size1][Size2] = {0};//Airbus First Class
+
+int airbusABusinessClass[Size1][Size2] = { 0 };//Airbus Business Class
+
+int airbusAEconomyClass[Size1][Size2] = { 0 };//Airbus Economy Class
+
+int boeingFirstClassFirstFloor[Size1][Size2] = { 0 };//Boeing First Class On The First Floor
+
+int boeingFirstClassSecondFloor[Size1][Size2] = { 0 };//Boeing First Class On Second Floor
+
+int boeingBusinessClass[Size1][Size2] = { 0 };//Boeing Business Class
+
+int boeingEconomyClass[Size1][Size2] = { 0 };//Boeing Economy Class
+
+
+
+
+
+
+void menu() {
+
+
+    puts("\n\t\t     **********************\n");
+    puts("\t\t\t***  Welcome    *********\n");
+    puts("\t\t\t****** To     *********\n");
+    puts("\t\t\t****  Cloud 9 *****\n");
+    puts("\t\t\t**********************\n");
+    puts("\t\t\t**********************\n");
+    puts("      **********************\n");
+    puts("\n");
+    puts("********\n");
+    puts("**\tProject By:\t    **\n");
+    puts("**\tRamin Tajwanchi\t    **\n");
+    puts("\t\t      ********\n");
+           
+    puts("\n");
+    puts("\n");
+    
+
+    puts("***  Please make a selection from the following options  ***\n");
+    puts("\n");
+    puts(" 1 - Booking a Seat on Airbus 300A\n");
+    puts(" 2 - Booking a Seat on Boeing 747\n");
+    puts(" 3 - To cancel a reservation on Airbus 300A\n");
+    puts(" 4 - To cancel a reservation on Boeing 747\n");
+    puts(" 5 - View Booked and available seating\n");
+    puts(" 6 - \n");
+    puts("\n");
+    puts("\n");
+    puts("\n");
+    puts("Press 0 to Exit\n");
+
+    int choice = 0;
+    scanf("%d", &choice);
+
+
+    switch (choice) {
+    case 1: booking300A(); break;
+    case 2: booking747(); break;
+    case 3: cancel300A(); break;
+    case 4: cancel747(); break;
+    case 5: viewSeatingPlan(); break;
+
+    default :
+        exit(0);
+        break;
+    }
+
+
+ }
+
+//BOOKING ON AIRBUS 300A START
+void booking300A() {
+    int xx = 0;
+    
+    puts("\nYou are currently in the Booking for Airbus 300A menu\n");
+    puts("\n\nTo Book a ticket on Airbus300A:\n 1 - First Class\n 2 - Business Class\n 3 - Economy Class\n");
+    puts("");
+    puts("Enter 9 to go back to menu\n");
+    puts("Enter 0 to exit\n");
+    scanf("%d", &xx);
+
+    switch (xx) {
+    case 1: airbusFirstBooking();
+    case 2: airbusBusinessBooking();
+    case 3: airbusEconomyBooking();
+
+
+    case 9: menu();
+    default:
+        exit(0);
+        break;
+
+    }
+
+}
+
+void airbusFirstBooking() {
+
+
+}
+
+void airbusBusinessBooking() {
+
+
+}
+
+void airbusEconomyBooking() {
+
+
+}
+//BOOKING ON AIRBUS 300A END
+
+
+//BOOKING ON BOEING 747 START
+void booking747() {
+    int xx = 0;
+
+    puts("\nYou are currently in the Booking BOEING 747 menu\n");
+    puts("\n\nTo Book a ticket on Boeing 747:\n 1 - First Class on the First Floor\n 2 - First Class on the Second Floor\n 3 - Business Class\n 4 - Economy Class\n");
+    puts("");
+    puts("Enter 9 to go back to menu\n");
+    puts("Enter 0 to exit\n");
+    scanf("%d", &xx);
+
+    switch (xx) {
+    case 1:
+
+
+    case 9: menu();
+    default:
+        exit(0);
+        break;
+
+    }
+
+}
+
+
+//BOOKING ON BOEING 747 START
+void cancel300A() {
+    int xx = 0;
+
+    puts("\nYou are currently in the seat viewing menu\n");
+
+    puts("\n\nTo view Boeing 747:\n 4 - First Class on the First Floor\n 5 - First Class on the Second Floor\n 6 - Business Class\n 7 - Economy Class\n");
+    puts("");
+    puts("Enter 9 to go back to previous menu\n");
+    puts("Enter 0 to exit\n");
+    scanf("%d", &xx);
+
+    switch (xx) {
+    case 1:
+
+
+    case 9: menu();
+    default:
+        exit(0);
+        break;
+
+    }
+
+}
+
+void cancel747() {
+    int xx = 0;
+    puts("\nYou are currently in the seat viewing menu\n");
+    puts("\n\nTo view Airbus300A:\n 1 - First Class\n 2 - Business Class\n 3 - Economy Class\n");
+    puts("\n\nTo view Boeing 747:\n 4 - First Class on the First Floor\n 5 - First Class on the Second Floor\n 6 - Business Class\n 7 - Economy Class\n");
+    puts("");
+    puts("Enter 9 to go back to previous menu\n");
+    puts("Enter 0 to exit\n");
+    scanf("%d", &xx);
+
+    switch (xx) {
+    case 1:
+
+
+    case 9: menu();
+    default:
+        exit(0);
+        break;
+
+    }
+
+}
+
+//Printing the Seating plan 
+void viewSeatingPlan() {
+    int xx = 0;
+
+    puts("\nYou are currently in the seat viewing menu\n");
+    puts("\n\nTo view Airbus300A:\n 1 - First Class\n 2 - Business Class\n 3 - Economy Class\n");
+    puts("\n\nTo view Boeing 747:\n 4 - First Class on the First Floor\n 5 - First Class on the Second Floor\n 6 - Business Class\n 7 - Economy Class\n");
+    puts("");
+    puts("Enter 9 to go back to previous menu Or 0 To Exit");
+ 
+    scanf("%d", &xx);
+
+    int sizOfArryAirbusF = sizeof(airbusAFirstClass) / sizeof(airbusAFirstClass[0][0]);//Airbus First Class
+
+    int sizOfArryAirbusB = sizeof(airbusABusinessClass) / sizeof(airbusABusinessClass[0][0]);;//Airbus Business Class
+
+    int sizOfArryAirbusE = sizeof(airbusAEconomyClass) / sizeof(airbusAEconomyClass[0][0]);//Airbus Economy Class
+
+    int sizOfArryBoeingFFF = sizeof(boeingFirstClassFirstFloor) / sizeof(boeingFirstClassFirstFloor[0][0]);//Boeing First Class On The First Floor
+
+    int sizOfArryBoeingFSF = sizeof(boeingFirstClassSecondFloor) / sizeof(boeingFirstClassSecondFloor[0][0]);//Boeing First Class On Second Floor
+
+    int sizOfArryBoeingB = sizeof(boeingBusinessClass) / sizeof(boeingBusinessClass[0][0]);//Boeing Business Class
+
+    int sizOfArryBoeingE = sizeof(boeingEconomyClass) / sizeof(boeingEconomyClass[0][0]);//Boeing Economy Class
+
+
+   // printArray(boeingEconomyClass, sizOfArryBoeingE);
+
+
+    switch (xx) {
+    case 1: printArray(airbusAFirstClass, sizOfArryAirbusF);
+        break;
+    case 2: printArray(airbusABusinessClass, sizOfArryAirbusB);
+        break;
+    case 3: printArray(airbusAEconomyClass, sizOfArryAirbusE);
+        break;
+    case 4: printArray(boeingFirstClassFirstFloor, sizOfArryBoeingFFF);
+        break;
+    case 5: printArray(boeingFirstClassSecondFloor, sizOfArryBoeingFSF);
+        break;
+    case 6: printArray(boeingBusinessClass, sizOfArryBoeingB);
+        break;
+    case 7: printArray(boeingEconomyClass, sizOfArryBoeingE);
+        break;
+    case 9: menu();
+        break;
+    default:
+        exit(0);
+        break;
+    }
+} 
+
+//Array Printer
+void printArray(int i, int j,float arr[i][j], int size) {
+    puts("Array Printed:\n");
+    for (int i = 0; i < Size1; i++)
+    {
+        for (int j = 0; j < Size2; j++) {
+            arr[i][j] = '.';
+            printf("%d ", arr[i][j]);
+        }
+    }
+}
+
+
+
+//int airbusAFirstClass[Size1][Size2] = { 0 };//Airbus First Class
+//
+//int airbusABusinessClass[Size1][Size2] = { 0 };//Airbus Business Class
+//
+//int airbusAEconomyClass[Size1][Size2] = { 0 };//Airbus Economy Class
+//
+//int boeingFirstClassFirstFloor[Size1][Size2] = { 0 };//Boeing First Class On The First Floor
+//
+//int boeingFirstClassSecondFloor[Size1][Size2] = { 0 };//Boeing First Class On Second Floor
+//
+//int boeingBusinessClass[Size1][Size2] = { 0 };//Boeing Business Class
+//
+//int boeingEconomyClass[Size1][Size2] = { 0 };//Boeing Economy Class
+
+
+//
+//
+//for (i = 0; i < Size1; i++) {
+//    for (j = 0; j < Size2; j++) {
+//        grid[i][j] = '.';
+//        printf("%c ", grid[i][j]);
+//    }
+//    printf("\n");
+//}
