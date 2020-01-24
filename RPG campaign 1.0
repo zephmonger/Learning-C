@@ -1,0 +1,401 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+
+void menu();
+
+void startMainCamp();
+
+void castleEntrance();
+
+void mainEntrance();
+void firstfloorLeftRoom();
+
+
+void secondFloorRightrm();
+void secondFloorRightRightrm();
+
+void secondFloorFronttrm();
+void secondFloorOtherDiningHallRm();
+
+
+void gatekepperRoom();
+
+void bossRoom();
+
+
+int main() {
+
+    menu();
+
+    system("pause");
+    return 0;
+}
+
+void menu() {
+    int gameMenu;
+    puts("************************\n");
+    puts("********** GAME MENU **********\n");
+    puts("************************\n");
+    puts("Press 1  : Start Campaign\n");
+    puts("Press 2  : Start the Multiplayer\n");
+    puts("Press 0 : exit\n");
+    puts("************************\n");
+    scanf("%d", &gameMenu);
+    switch (gameMenu) {
+    case 1:                         // //Choose here and start campaign
+        chooseAHero();
+
+
+
+
+
+        break;
+
+    case 2:       startMainCamp();              //Multi player
+
+
+
+
+
+        break;
+    }
+}
+
+void startMainCamp() {
+    //Maybe choose hero here?
+
+  //if (userChoice == 1){User is Paladin}     ---Example to implement hero choice
+
+    puts("You’ve heard rumors in an Inn a night’s march away about a bounty on a Villain!");
+    puts("");
+    puts("As you gather more information on the villain, you find out his name is…");
+    puts("\tMr. Fluffles!!! >:3");
+    puts("");
+    puts("Press 1 to go after the bounty on Mr. Fluffles' head");
+    puts("Or");
+    puts("Press 2 to stay here and get drunk! ;]");
+    puts("");
+    int xx = 0;
+    scanf("%d", &xx);
+    switch (xx) {
+    case 1:  puts("You come across a castle at night ornamented with teddy bears and pirate flags");
+        puts("As you enter the castle’s main gates, you see several torch lights flickering in few of the sections of the castle");
+        castleEntrance();
+        break;
+    case 2: puts("It was probably a joke anyway.");
+        puts("With a 60,000 Gold coin bounty on his head,");
+        puts("Only an idiot would go after Mr. Fluffles");
+        break;
+    }//end of switch
+}
+
+
+
+void castleEntrance() {
+    puts("There seems to be a giant door way directly in front of the Castle gates");
+    puts("As well as one giant door way to the left of the gates");
+    puts("Press 1 to enter Giant doorway");
+    puts("Or");
+    puts("Press 2 to go to the room to the left");
+    int xx = 0;
+    scanf("%d", &xx);
+    switch (xx) {
+    case 1:         mainEntrance();
+
+        break;
+    case 2:     firstfloorLeftRoom();
+
+
+        break;
+
+    }
+}
+
+
+    void mainEntrance() {
+        
+        int xx = 0;
+
+        puts("As you enter the giant doorway, you see a door to your left and a staircase right in front of you.\n");
+        puts("You look around and see some decorations as well as a giant painting of an elegantly dressed feline.");
+        puts("Press 1 to go to the door on your left");
+        puts("OR");
+        puts("Press 2 to go up the stairs");
+        puts("Or");
+        puts("Press 3 to go back");
+        scanf("%d", &xx);
+        switch (xx) {
+        case 1:     firstfloorLeftRoom();           
+                                    //Left door first floor
+                                    //Also contains a villian
+            break;
+        case 2:       secondFloorStairRoom();                //Going up the staircase
+            break;
+        case 3:      castleEntrance();      //Going back to main  entrance of the castle
+
+
+            break;
+        }
+    }
+
+    // complete
+    void firstfloorLeftRoom() {
+        
+        puts("As you enter through the door, you see…");
+        puts("A small fireplace lined with cute little kittens, and a strange figure warming up.");
+        puts("Even though you have trained years to be a professional bounty hunter, your inspection of the room seemed to miss several pebbles lying on the ground and you just happen to somehow manage to kick a couple of them and they bounce several feet making your presence known to the figure!\n ;");
+        puts("");
+        puts("As the figure turns around, you see a look of confusion on his face wondering who you are and what you might be doing at this time of night.");
+        puts("Suddenly the figure comes charging at you!");
+        puts("Fight!");
+
+                                    //Fght!!!
+
+
+
+
+
+        
+        //Once villian dies, switch
+        puts("once the fighting is done, you see a door to your right and a door to your left");
+        puts("Press 1 to go to the door to Gate keeper room");//Gate keeper room
+        puts("OR");
+        puts("Press 2 to go to the door on your right to Main entrance");
+        puts("Or");
+        puts("Press 3 to go back");
+        int xx = 0;
+        scanf("%d", &xx);
+        puts("");
+        switch (xx) {
+        case 1:  mainEntrance();
+            break;
+
+        case 2: gatekepperRoom();
+
+            break;
+        case 3:      castleEntrance();      //Going back to main  entrance of the castle
+
+
+            break;
+        }
+    }
+
+    // complete
+    void gatekepperRoom() {
+        puts("Gatekeeper asks: 'What are you doing here?'");
+        puts("1- I am here for the bounty on Mr Fluffles");// fights gatekeeper
+        puts("2- I am lost :(");// leads to trap
+        puts("3- I just need a hug! :(");
+        int Menu3 = 0;
+        scanf("%d", &Menu3);
+
+        if (Menu3 == 1) {
+            puts("The Gatekeeper suddenly charges at you!!"); //fight function
+                                      //If hero wins, go to boss room
+            
+
+
+            puts("There seems to be a hidden doorway behidn where the Gatekeeper used to be");
+            puts("Press 1 to go through the hidden doorway");
+            puts("OR");
+            puts("Press 2 to go back the way you came");
+            int xx = 0;
+            switch (xx) {
+            case 1: bossRoom();
+            
+                break;
+            
+            case 2: firstfloorLeftRoom();
+
+                break;
+            }      
+        }//End of switch
+
+        if (Menu3 == 2) {  //Character dies
+            puts("The gatekeeper abruptly shoves you into the room to his right!!");
+            puts("You have fallen on spikes!\n Yuck!\n");
+            puts("Congradulations! you have died"); //Leads to trap
+         // certain death
+            menu();
+        }
+        if (Menu3 == 3) {
+            puts("The Gatekeeper looks a little puzzled by your request...\n");
+            puts("Nonetheless, he also seems to jeed a hug as well");
+            puts("While you guys are hugging it out, the Gatekeeper suddenly stabs you right through the chest!!");
+            puts("Congradulations! you have died");
+            // certain death
+            menu();
+        }
+    }
+
+
+    void secondFloorStairRoom() {
+        puts("As you make your way into the room with the stairs, you notice a couple of doors.");
+        puts("Press 1 to go down the stairs");
+        puts("Or");
+        puts("Press 2 to go into the room to the right of the stairs");
+        puts("OR");
+        puts("Press 3 to go into the room directly in front of the stairs");
+        int xx = 0;
+        scanf("%d", &xx);
+        switch (xx) {
+        case 1:      mainEntrance();
+        
+            break;
+        case 2:         secondFloorRightrm();
+
+
+            break;
+        case 3:    secondFloorFronttrm();
+
+
+            break;
+
+        
+        }
+
+    }
+
+    void secondFloorRightrm() {
+        puts("As you enter  the room, you notice its oddly filled with gold, gold, and more gold!");
+        puts("You notice a figure near the gold pieces,");
+        puts("");
+        puts("Perhaps he needs an introduction to the tip of your weapon?");
+                        //Fight!!
+
+
+
+
+
+
+        puts("There seems to be another room after this one");
+        puts("What shall be your choice?");
+        puts("Press 1 to go into the Stairs room");
+        puts("Press 2 to go into the room across from the door to the Stairs room");
+        int xx = 0;
+        scanf("%d", &xx);
+        switch (xx) {
+        case 1:         secondFloorStairRoom();
+
+            break;
+        case 2:          secondFloorRightRightrm();
+
+            break;
+        }
+    }
+
+    void secondFloorRightRightrm() {
+        puts("There seems to be...");
+        puts("Some beds around the room");
+        puts("You are in the sleeping quarters");
+        puts("");
+        puts("You woke up a sleeping guard!!");
+        puts("");
+        puts("FIGHT!!");
+
+
+                            //Villian fight!
+
+
+
+
+        puts("You seem to have killed the guard!");
+        puts("");
+        puts("Press 1 to go back into the Treasure room");
+        int xx = 0;
+        scanf("%d", &xx);
+        switch (xx) {
+        case 1:
+
+        }
+    }
+
+    void secondFloorFronttrm() {
+        puts("The door opens without any effort");
+        puts("This room seems to be the Grand Dining Hall");
+        puts("There is a grandly decorated door to the left and a door to another room to the right side of the door to the Stairs Room");
+        puts("Press 1 to go into Lavishly decorated door");
+        puts("OR");
+        puts("Press 2 to into the room to the right side of the door to the Stairs Room");
+        puts("OR");
+        puts("Press 3 to go back");
+        int xx = 0;
+        scanf("%d", &xx);
+        switch (xx) {
+        case 1:         bossRoom();
+            break;
+        case 2:
+
+
+            break;
+        case 3:             secondFloorStairRoom();
+
+            break;
+
+        }
+    }
+
+    void secondFloorOtherDiningHallRm() {
+        puts("This room kind of smells...");
+        puts("Odd...");
+        puts("");
+        puts("You seem to have come into the toilet room");
+        puts("Press 1 to go back to Dining Hall");
+        int xx = 0;
+        scanf("%d", &xx);
+        switch (xx) {
+        case 1:         secondFloorFronttrm();
+            break;
+        }
+    }
+
+
+
+    //Boss Room!!!!!! :O
+    void bossRoom() {
+        puts("As you enter through the door, you see this creature that reminds you of your old cat,");
+        puts("But deep down inside you know this is the boss, Mr. Fluffles!");
+        puts("He grins menacingly and tell you this isn't a place for children to get lost in.");
+        puts("\nYou tell him that you're a big boy with big boy responsibilities!!");
+        puts("He tells you that he is well aware of bounty hunters coming after the bounty on his head.");
+        puts("\n He offers you some of the jewelery he's been collecting as well as a shortcut to the main floor in exchange for you to leave him alone");
+        puts("Press 1 to take his offer");
+        puts("OR");
+        puts("Press 2 to fight Mr. Fluffles!");
+        int xx = 0;
+        scanf("%d", &xx);
+
+        if (xx == 1) {
+            puts("Your greedy nature seems to have payed off.");
+            puts("As you take your treasure and go towards the shortcut Mr. Fluffles had proposed for your to take,");
+            puts("Mr. Fluffles pushes a button and the floor beneath your feet drop into a trap!");
+            puts("Hehehe...");
+            puts("Who saw that comign :P");
+            puts("You have fallen on spikes!\n Yuck!\n");
+            puts("Congradulations! you have died");
+            menu();
+        }  if (xx == 2) {
+            //Boss fight!!
+
+
+
+
+
+        }
+
+        puts("Now that you have Mr. Fluffles head, Where do you wish to go?");
+        puts("Press 1 to go back to the Dining Hall");
+        puts("OR");
+        puts("Press 1 to go through the hidden doorway");
+        int xxx = 0;
+        scanf("%d", &xxx);
+        switch (xxx) {
+        case 1:     secondFloorFronttrm();
+
+            break;
+        case 2:         gatekepperRoom();
+
+        }
+
+    }
