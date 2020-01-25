@@ -1,0 +1,875 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <stdbool.h>
+#include "prototype.h"
+
+//#define Frow 5
+//#define Fcol 4
+//void printArray(int arr[Frow][Fcol]);//Array Printer
+
+
+int main() {
+	mainMenu();
+
+
+	system("pause");
+	return 0;
+}
+
+
+///////Above is Main.c
+
+
+
+
+#pragma once
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <stdbool.h>
+
+
+
+void mainMenu();		//Program start- Main Menu
+void menu();			//Main Directive menu
+
+
+// Bookings in plane Airbus 300A			START
+void airbusFirstBooking(int r, int c);
+void booking300A();			//Menu
+void airbusBusinessBooking(int r, int c);
+void airbusEconomyBooking(int r, int c);
+// Bookings in plane Airbus 300A			 END
+
+void ifBooked(); //If seat is booked on		 A300
+void ifNotBooked();//If seat is NOT booked on		A300
+
+// Cancelling in plane Airbus 300A		START
+void cancel300A();  //Menu
+void airbusFirstCancelling(int r, int c);
+void airbusBusinessCancelling(int r, int c);
+void airbusEconomyCancelling(int r, int c);
+// Cancellng in plane Airbus 300A		END
+
+
+
+// Bookings in plane Boeing 747		 START
+void booking747();				// Bookings in plane Boeing 747 Menu
+void boeingFirstFFBooking(int r, int c);
+void boeingFirstSFBooking(int r, int c);
+void boeingBusinessBooking(int r, int c);
+void boeingEconomyBooking(int r, int c);
+// Bookings in plane Boeing 747			END
+
+void ifBooked2();			 //If seat is booked on Boeing 747
+void ifNotBooked2();			//If seat is NOT booked on Boeing 747
+
+// Cancelling in plane Boeing 747 START
+void cancel747();		 //Menu
+void boeingFirstFFCancel(int r, int c);
+void boeingFirstSFCancel(int r, int c);
+void boeingBusinessCancel(int r, int c);
+void boeingEconomyCancel(int r, int c);
+// Cancellng in plane Boeing 747 END
+
+
+
+void viewSeatingPlan();//Menu to open selection options for the planes and thier classes
+
+
+
+
+
+//Function Prototypes are above
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+#include <stdbool.h>
+#include "prototype.h"
+#define Frow 5
+#define Fcol 4
+#define Brow 6
+#define Bcol 6
+#define ErowA300 24
+#define EcolA300 10
+#define Erow747 34
+#define Ecol747 10
+
+
+
+int printArray(int arr[Frow][Fcol]);
+
+
+
+
+
+int airbusAFirstClass[Frow][Fcol];//Airbus First Class
+
+static int airbusABusinessClass[Brow][Bcol];//Airbus Business Class
+
+static int airbusAEconomyClass[ErowA300][EcolA300];//Airbus Economy Class
+
+static int boeingFirstClassFirstFloor[Frow][Fcol];//Boeing First Class On The First Floor
+
+static int boeingFirstClassSecondFloor[Frow][Fcol];//Boeing First Class On Second Floor
+
+static int boeingBusinessClass[Brow][Bcol];//Boeing Business Class
+
+static int boeingEconomyClass[Erow747][Ecol747];//Boeing Economy Class
+
+
+//Program start- Main Menu
+void mainMenu() {
+
+	puts("                                ****");
+	puts("                             ***********");
+	puts("                         ******    **********");
+	puts("                   ********          *************");
+	puts("              *********                 ***************");
+	puts("           **********                      **************");
+	puts("             **********                      **************");
+	puts("                *********                 ***************");
+	puts("                    **********         ****************");
+	puts("                            *****    *************");
+	puts("                                 ***********");
+	puts("                               **********");
+	puts("                            **********");
+	puts("                         **********");
+	puts("                      **********");
+	puts("                   **********");
+	puts("                **********");
+	puts("             **********");
+	puts("          *********");
+
+
+	puts("");
+	puts("\t\t\t\t************    Cloud      *************\n");
+	puts("\t\t\t\t********     9     *************\n");
+	puts("\t\t\t\t****  International Transportation *****\n");
+
+
+	puts("***\tProject By:\t    ***\n");
+	puts("***\tRamin Tajwanchi\t    ***\n");
+	puts("\t   ***********\n");
+	puts("");
+	puts("");
+	puts("");
+	puts("Welcome to Cloud 9 Inc.!");
+	puts("Press 1 to get started or 0 to exit program");
+	int xx = 0;
+	scanf("%d", &xx);
+	switch (xx) {
+	case 1: menu();
+
+		break;
+	default:
+		exit(0);
+		break;
+	}
+
+}
+
+//Main Directive menu
+void menu() {
+
+	puts("\n");
+
+	puts("***  Please make a selection from the following options  ***\n");
+	puts(" 1 - Booking a Seat on Airbus 300A\n");
+	puts(" 2 - Booking a Seat on Boeing 747\n");
+	puts(" 3 - To cancel a reservation on Airbus 300A\n");
+	puts(" 4 - To cancel a reservation on Boeing 747\n");
+	puts(" 5 - View current seating plan\n");
+
+	puts("\n");
+	puts("Press 0 to Exit\n");
+	/*int r, c;*/
+	int choice = 0;
+	scanf("%d", &choice);
+
+
+	switch (choice) {
+	case 1: booking300A();
+		break;
+	case 2: booking747();
+		break;
+	case 3: cancel300A();
+		break;
+	case 4: cancel747();
+		break;
+	case 5: viewSeatingPlan();
+		break;
+
+	default:
+		exit(0);
+		break;
+	}
+}
+
+//BOOKING ON AIRBUS A300 START
+//Menu For A300
+void booking300A() {
+	int xx = 0;
+	int r = 0, c = 0;
+	puts("\nYou are currently in the Booking for Airbus 300A menu\n");
+	puts("\n\nTo Book a ticket on Airbus300A:\n 1 - First Class\n 2 - Business Class\n 3 - Economy Class\n");
+	puts("");
+	puts("Enter 9 to go back to menu\n");
+	puts("Enter 0 to exit\n");
+	scanf("%d", &xx);
+
+	switch (xx) {
+	case 1: airbusFirstBooking(r, c);
+		break;
+	case 2: airbusBusinessBooking(r, c);
+		break;
+	case 3: airbusEconomyBooking(r, c);
+		break;
+	case 9: menu();
+		break;
+	default:
+		exit(0);
+		break;
+	}
+}
+
+//First Class Booking on A300
+void airbusFirstBooking(int r, int c) {
+
+	puts("Please select a Row! - (Row 1 to 5)");
+	scanf("%d", &r);
+	puts("Please select a Column! - (Col 1 to 4)");
+	scanf("%d", &c);
+	printf(" You have chosen Row %d Column %d was chosen", r, c);
+
+	puts("");
+
+
+	if (airbusAFirstClass[r][c] == 0) {
+		airbusAFirstClass[r][c] == 1;
+		puts("Your reservation is confirmed!");
+		puts("*--LEGEND:--*");
+		puts(">> 0 -- Seat is Available!");
+		puts(">> 1 -- Seat is Reserved!");
+		int sizOfArryAirbusF = sizeof(airbusAFirstClass) / sizeof(airbusAFirstClass[1][1]);//Airbus First Class
+		printf(" \t%10s\t%10s\t%10s\t%10s\n", "Col-1", "Col-2", "Col-3", "Col-4");
+		printArray(airbusAFirstClass, sizOfArryAirbusF);
+
+		menu();
+	}
+	if (airbusAFirstClass[r][c] == 1) {
+		ifBooked();
+
+	}
+}
+
+//Busniness Booking on A300
+void airbusBusinessBooking(int r, int c) {
+
+	puts("Please select a Row! - (Row 1 to 6)");
+	scanf("%d", &r);
+	puts("Please select a Column! - (Col 1 to 6)");
+	scanf("%d", &c);
+	printf(" You have chosen Row %d Column %d was chosen", r, c);
+
+	puts("");
+
+
+	if (airbusAFirstClass[r][c] == 0) {
+		airbusAFirstClass[r][c] == 1;
+		puts("Your reservation is confirmed!");
+		puts("*--LEGEND:--*");
+		puts(">> 0 -- Seat is Available!");
+		puts(">> 1 -- Seat is Reserved!");
+		int sizOfArryAirbusB = sizeof(airbusABusinessClass) / sizeof(airbusABusinessClass[1][1]);;//Airbus Business Class
+		printf(" \t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\n", "Col-1", "Col-2", "Col-3", "Col-4", "Col-5", "Col-6");
+		printArray(airbusABusinessClass, sizOfArryAirbusB);
+
+
+		menu();
+	}
+	if (airbusAFirstClass[r][c] == 1) {
+		ifBooked();
+
+	}
+}
+
+//Economy Booking on A300
+void airbusEconomyBooking(int r, int c) {
+
+	puts("Please select a Row! - (Row 1 to 24)");
+	scanf("%d", &r);
+	puts("Please select a Column! - (Col 1 to 10)");
+	scanf("%d", &c);
+	printf(" You have chosen Row %d Column %d was chosen", r, c);
+
+	puts("");
+
+
+	if (airbusAFirstClass[r][c] == 0) {
+		airbusAFirstClass[r][c] == 1;
+		puts("Your reservation is confirmed!");
+		puts("*--LEGEND:--*");
+		puts(">> 0 -- Seat is Available!");
+		puts(">> 1 -- Seat is Reserved!");
+		int sizOfArryAirbusE = sizeof(airbusAEconomyClass) / sizeof(airbusAEconomyClass[1][1]);//Airbus Economy Class
+		printf(" \t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\n", "Col-1", "Col-2", "Col-3", "Col-4", "Col-5", "Col-6", "Col-7", "Col-8", "Col-9", "Col-10");
+		printArray(airbusAEconomyClass, sizOfArryAirbusE);
+
+
+		menu();
+	}
+	if (airbusAFirstClass[r][c] == 1) {
+		ifBooked();
+
+	}
+
+}
+//BOOKING ON AIRBUS 300A END
+
+//Cancelling ON AIRBUS 300A START
+void cancel300A() {
+	int xx = 0;
+	int r = 0, c = 0;
+	puts("\nYou are currently in the Cancelling AIRBUS 300A menu\n");
+
+	puts("Please view the following menu and enter your choice!");
+	puts("1- Cancel First Class");
+	puts("2- Cancel Business Class");
+	puts("3- Cancel Economy Class");
+	puts("Enter 9 to go back to previous menu\n");
+	puts("Enter 0 to exit\n");
+	scanf("%d", &xx);
+
+	switch (xx) {
+	case 1:	airbusFirstCancelling(r, c);
+		break;
+	case 2:	airbusBusinessCancelling(r, c);
+		break;
+	case 3:			airbusEconomyCancelling(r, c);
+		break;
+	case 9: menu();
+		break;
+	default:
+		exit(0);
+		break;
+
+	}
+}
+
+//First Class Cancelling on A300
+void airbusFirstCancelling(int r, int c) {
+
+	puts("Please select a Row! - (Row 1 to 5)");
+	scanf("%d", &r);
+	puts("Please select a Column! - (Col 1 to 4)");
+	scanf("%d", &c);
+	printf(" You have chosen Row %d Column %d was chosen", r, c);
+	puts("");
+
+
+	if (airbusAFirstClass[r][c] == 1) {
+		airbusAFirstClass[r][c] == 0;
+		puts("The Reservation has been Cancelled!");
+
+		menu();
+	}
+	if (airbusAFirstClass[r][c] == 1) {
+		ifNotBooked();
+
+	}
+}
+//Business Cancelling on A300
+void airbusBusinessCancelling(int r, int c) {
+
+	puts("Please select a Row! - (Row 1 to 6)");
+	scanf("%d", &r);
+	puts("Please select a Column! - (Col 1 to 6)");
+	scanf("%d", &c);
+	printf(" You have chosen Row %d Column %d was chosen", r, c);
+	puts("");
+
+	if (airbusAFirstClass[r][c] == 0) {
+		airbusAFirstClass[r][c] == 1;
+		puts("The Reservation has been Cancelled!");
+
+		menu();
+	}
+	if (airbusAFirstClass[r][c] == 1) {
+		ifNotBooked();
+	}
+}
+
+//Economy Cancelling on A300
+void airbusEconomyCancelling(int r, int c) {
+
+	puts("Please select a Row! - (Row 1 to 24)");
+	scanf("%d", &r);
+	puts("Please select a Column! - (Col 1 to 10)");
+	scanf("%d", &c);
+	printf(" You have chosen Row %d Column %d was chosen", r, c);
+	puts("");
+
+
+	if (airbusAFirstClass[r][c] == 0) {
+		airbusAFirstClass[r][c] == 1;
+		puts("The Reservation has been Cancelled!");
+
+		menu();
+	}
+	if (airbusAFirstClass[r][c] == 1) {
+		ifNotBooked();
+
+	}
+
+}
+
+//If booked when booking	 300A
+void ifBooked() {
+	puts("There is a reservation for your selected seat. Would you like to cancel the reservation?");
+	puts("Press 1 to cancel\n OR\n Press 2 to go back to main menu");
+	int xx = 0;
+	scanf("%d", &xx);
+
+	switch (xx) {
+	case 1:	cancel300A();
+		break;
+	case 2:	menu();
+		break;
+	}
+
+
+}
+
+//If Not booked when cancelling		300A
+void ifNotBooked() {
+	puts("Current seat selection is available for booking. Would you like to book now?");
+	puts("Press 1 to book\n OR\n Press 2 to go back to main menu");
+	int xx = 0;
+	scanf("%d", &xx);
+
+	switch (xx) {
+	case 1:	booking300A();
+		break;
+	case 2:	menu();
+		break;
+	}
+}
+//Cancelling ON AIRBUS 300A END
+
+//Booking On Boeing 747 START
+//Menu
+void booking747() {
+	int xx = 0;
+	int r = 0, c = 0;
+	puts("\nYou are currently in the Booking for Boeing 747 menu\n");
+	puts("\n\nTo Book a ticket on Boeing 747:\n 1 - First Class First Floor\n 2 - First Class Second Floor\n 3 - Business Class\n 4 - Economy Class\n");
+	puts("");
+	puts("Enter 9 to go back to menu\n");
+	puts("Enter 0 to exit\n");
+	scanf("%d", &xx);
+
+	switch (xx) {
+	case 1: boeingFirstFFBooking(r, c);
+		break;
+	case 2: boeingFirstSFBooking(r, c);
+		break;
+	case 3:	boeingBusinessBooking(r, c);
+		break;
+	case 4: boeingEconomyBooking(r, c);
+		break;
+	case 9: menu();
+		break;
+	default:
+		exit(0);
+		break;
+	}
+}
+
+//First Class First Floor Booking on Boeing 747
+void boeingFirstFFBooking(int r, int c) {
+	puts("Please select a Row! - (Row 1 to 5)");
+	scanf("%d", &r);
+	puts("Please select a Column! - (Col 1 to 4)");
+	scanf("%d", &c);
+	printf(" You have chosen Row %d Column %d was chosen", r, c);
+	puts("");
+
+
+	if (boeingFirstClassFirstFloor[r][c] == 0) {
+		boeingFirstClassFirstFloor[r][c] == 1;
+		puts("Your reservation is confirmed!");
+		puts("*--LEGEND:--*");
+		puts(">> 0 -- Seat is Available!");
+		puts(">> 1 -- Seat is Reserved!");
+		int sizOfArryBoeingFFF = sizeof(boeingFirstClassFirstFloor) / sizeof(boeingFirstClassFirstFloor[1][1]);//Boeing First Class On The First Floor
+		printf(" \t%10s\t%10s\t%10s\t%10s\n", "Col-1", "Col-2", "Col-3", "Col-4");
+		printArray(boeingFirstClassFirstFloor, sizOfArryBoeingFFF);
+		menu();
+	}
+	if (boeingFirstClassFirstFloor[r][c] == 1) {
+		ifBooked2();
+
+	}
+}
+
+//First Class Second Floor Booking on Boeing 747
+void boeingFirstSFBooking(int r, int c) {
+
+	puts("Please select a Row! - (Row 1 to 5)");
+	scanf("%d", &r);
+	puts("Please select a Column! - (Col 1 to 4)");
+	scanf("%d", &c);
+	printf(" You have chosen Row %d Column %d was chosen", r, c);
+
+	puts("");
+
+
+	if (boeingFirstClassSecondFloor[r][c] == 0) {
+		boeingFirstClassSecondFloor[r][c] == 1;
+		puts("Your reservation is confirmed!");
+		puts("*--LEGEND:--*");
+		puts(">> 0 -- Seat is Available!");
+		puts(">> 1 -- Seat is Reserved!");
+		int sizOfArryBoeingFSF = sizeof(boeingFirstClassSecondFloor) / sizeof(boeingFirstClassSecondFloor[1][1]);//Boeing First Class On Second Floor
+		printf(" \t%10s\t%10s\t%10s\t%10s\n", "Col-1", "Col-2", "Col-3", "Col-4");
+		printArray(boeingFirstClassSecondFloor, sizOfArryBoeingFSF);
+		menu();
+	}
+	if (boeingFirstClassSecondFloor[r][c] == 1) {
+		ifBooked2();
+
+	}
+}
+
+//Busniness Class Booking on Boeing 747
+void boeingBusinessBooking(int r, int c) {
+	puts("Please select a Row! - (Row 1 to 6)");
+	scanf("%d", &r);
+	puts("Please select a Column! - (Col 1 to 6)");
+	scanf("%d", &c);
+	printf(" You have chosen Row %d Column %d was chosen", r, c);
+
+	puts("");
+
+
+	if (boeingBusinessClass[r][c] == 0) {
+		boeingBusinessClass[r][c] == 1;
+		puts("Your reservation is confirmed!");
+		puts("*--LEGEND:--*");
+		puts(">> 0 -- Seat is Available!");
+		puts(">> 1 -- Seat is Reserved!");
+		int sizOfArryBoeingB = sizeof(boeingBusinessClass) / sizeof(boeingBusinessClass[1][1]);//Boeing Business Class
+		printf(" \t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\n", "Col-1", "Col-2", "Col-3", "Col-4", "Col-5", "Col-6");
+		printArray(boeingBusinessClass, sizOfArryBoeingB);
+
+		menu();
+	}
+	if (boeingBusinessClass[r][c] == 1) {
+		ifBooked2();
+	}
+}
+
+//Economy Class Booking on Boeing 747
+void boeingEconomyBooking(int r, int c) {
+
+	puts("Please select a Row! - (Row 1 to 34)");
+	scanf("%d", &r);
+	puts("Please select a Column! - (Col 1 to 10)");
+	scanf("%d", &c);
+	printf(" You have chosen Row %d Column %d was chosen", r, c);
+
+	puts("");
+
+	if (boeingEconomyClass[r][c] == 0) {
+		boeingEconomyClass[r][c] == 1;
+		puts("Your reservation is confirmed!");
+		puts("*--LEGEND:--*");
+		puts(">> 0 -- Seat is Available!");
+		puts(">> 1 -- Seat is Reserved!");
+		int sizOfArryBoeingE = sizeof(boeingEconomyClass) / sizeof(boeingEconomyClass[1][1]);//Boeing Economy Class
+		printf(" \t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\n", "Col-1", "Col-2", "Col-3", "Col-4", "Col-5", "Col-6", "Col-7", "Col-8", "Col-9", "Col-10");
+		printArray(boeingEconomyClass, sizOfArryBoeingE);
+
+		menu();
+	}
+	if (boeingEconomyClass[r][c] == 1) {
+		ifBooked2();
+
+	}
+}
+//Booking on Boeing 747	END
+
+//Cancelling on Boeing 747	END
+void cancel747() {
+	int xx = 0;
+	int r = 0, c = 0;
+	puts("\nYou are currently in the Cancelling for Boeing 747 menu\n");
+	puts("\n\nTo Cancel a ticket on Boeing 747:\n 1 - First Class\n 3 - Business Class\n 4 - Economy Class\n");
+	puts("");
+	puts("Enter 9 to go back to menu\n");
+	puts("Enter 0 to exit\n");
+	scanf("%d", &xx);
+
+	switch (xx) {
+	case 1: boeingFirstFFBooking(r, c);
+		break;
+	case 2: boeingFirstSFBooking(r, c);
+		break;
+	case 3:	boeingBusinessBooking(r, c);
+		break;
+	case 4: boeingEconomyBooking(r, c);
+		break;
+	case 9: menu();
+		break;
+	default:
+		exit(0);
+		break;
+	}
+}
+
+//First First Floor Class Cancelling on Boeing 747 START
+void boeingFirstFFCancel(int r, int c) {
+
+	puts("Please select a Row! - (Row 1 to 5)");
+	scanf("%d", &r);
+	puts("Please select a Column! - (Col 1 to 4)");
+	scanf("%d", &c);
+	printf(" You have chosen Row %d Column %d was chosen", r, c);
+
+	puts("");
+
+	if (boeingFirstClassFirstFloor[r][c] == 1) {
+		boeingFirstClassFirstFloor[r][c] == 0;
+		puts("The Reservation has been Cancelled!");
+
+		menu();
+	}
+	if (boeingFirstClassFirstFloor[r][c] == 1) {
+		ifNotBooked2();
+	}
+}
+
+//First Second Floor Class Cancelling on Boeing 747
+void boeingFirstSFCancel(int r, int c) {
+
+	puts("Please select a Row! - (Row 1 to 5)");
+	scanf("%d", &r);
+	puts("Please select a Column! - (Col 1 to 4)");
+	scanf("%d", &c);
+	printf(" You have chosen Row %d Column %d was chosen", r, c);
+
+	puts("");
+
+	if (boeingFirstClassSecondFloor[r][c] == 1) {
+		boeingFirstClassSecondFloor[r][c] == 0;
+		puts("The Reservation has been Cancelled!");
+
+		menu();
+	}
+	if (boeingFirstClassSecondFloor[r][c] == 1) {
+		ifNotBooked2();
+	}
+}
+
+//Business Cancelling on Boeing 747
+void boeingBusinessCancel(int r, int c) {
+
+	puts("Please select a Row! - (Row 1 to 6)");
+	scanf("%d", &r);
+	puts("Please select a Column! - (Col 1 to 6)");
+	scanf("%d", &c);
+	printf(" You have chosen Row %d Column %d was chosen", r, c);
+
+	puts("");
+
+	if (boeingBusinessClass[r][c] == 0) {
+		boeingBusinessClass[r][c] == 1;
+		puts("The Reservation has been Cancelled!");
+
+		menu();
+	}
+	if (boeingBusinessClass[r][c] == 1) {
+		ifNotBooked2();
+	}
+}
+
+//Economy Cancelling on Boeing 747
+void boeingEconomyCancel(int r, int c) {
+
+	puts("Please select a Row! - (Row 1 to 34)");
+	scanf("%d", &r);
+	puts("Please select a Column! - (Col 1 to 10)");
+	scanf("%d", &c);
+	printf(" You have chosen Row %d Column %d was chosen", r, c);
+
+	puts("");
+
+	if (boeingEconomyClass[r][c] == 0) {
+		boeingEconomyClass[r][c] == 1;
+		puts("The Reservation has been Cancelled!");
+		menu();
+	}
+	if (boeingEconomyClass[r][c] == 1) {
+		ifNotBooked();
+	}
+}
+
+//If booked when booking Boeing 747 
+void ifBooked2() {
+	puts("There is a reservation for your selected seat. Would you like to cancel the reservation?");
+	puts("Press 1 to cancel\n OR\n Press 2 to go back to main menu");
+	int xx = 0;
+	scanf("%d", &xx);
+
+	switch (xx) {
+	case 1:	cancel747();
+		break;
+	case 2:	menu();
+		break;
+	}
+
+}
+
+//If Not booked when cancelling	Boeing 747
+void ifNotBooked2() {
+	puts("Current seat selection is available for booking. Would you like to book now?");
+	puts("Press 1 to book\n OR\n Press 2 to go back to main menu");
+	int xx = 0;
+	scanf("%d", &xx);
+
+	switch (xx) {
+	case 1:	booking747();
+		break;
+	case 2:	menu();
+		break;
+	}
+}
+//Cancelling ON AIRBUS 300A END
+
+//Printing Arrays
+int printArray(int arr[Frow][Fcol]) {
+
+	for (size_t i = 1; i < Frow + 1; i++)
+	{
+		printf("Row %d ", i);
+		for (size_t j = 0; j < Fcol; j++)
+		{
+			printf("\t\t%d", arr[i][j]);
+
+		}
+		puts("");
+	}
+}
+
+
+//Printing the Seating plan 
+void viewSeatingPlan() {
+	int xx = 0;
+
+	puts("\nYou are currently in the seat viewing menu\n");
+	puts("\n\nTo view Airbus300A:\n 1 - First Class\n 2 - Business Class\n 3 - Economy Class\n");
+	puts("\n\nTo view Boeing 747:\n 4 - First Class on the First Floor\n 5 - First Class on the Second Floor\n 6 - Business Class\n 7 - Economy Class\n");
+	puts("");
+	puts("Enter 9 to go back to previous menu Or 0 To Exit");
+
+	scanf("%d", &xx);
+
+	int sizOfArryAirbusF = sizeof(airbusAFirstClass) / sizeof(airbusAFirstClass[1][1]);//Airbus First Class
+
+	int sizOfArryAirbusB = sizeof(airbusABusinessClass) / sizeof(airbusABusinessClass[1][1]);;//Airbus Business Class
+
+	int sizOfArryAirbusE = sizeof(airbusAEconomyClass) / sizeof(airbusAEconomyClass[1][1]);//Airbus Economy Class
+
+	int sizOfArryBoeingFFF = sizeof(boeingFirstClassFirstFloor) / sizeof(boeingFirstClassFirstFloor[1][1]);//Boeing First Class On The First Floor
+
+	int sizOfArryBoeingFSF = sizeof(boeingFirstClassSecondFloor) / sizeof(boeingFirstClassSecondFloor[1][1]);//Boeing First Class On Second Floor
+
+	int sizOfArryBoeingB = sizeof(boeingBusinessClass) / sizeof(boeingBusinessClass[1][1]);//Boeing Business Class
+
+	int sizOfArryBoeingE = sizeof(boeingEconomyClass) / sizeof(boeingEconomyClass[1][1]);//Boeing Economy Class
+
+
+   // printArray(boeingEconomyClass, sizOfArryBoeingE);
+
+
+	switch (xx) {
+	case 1:
+		puts("*--LEGEND:--*");
+		puts(">> 0 -- Seat is Available!");
+		puts(">> 1 -- Seat is Reserved!");
+		printf(" \t%10s\t%10s\t%10s\t%10s\n", "Col-1", "Col-2", "Col-3", "Col-4");
+
+		printArray(airbusAFirstClass, sizOfArryAirbusF);
+		menu();
+		break;
+	case 2:	
+		puts("*--LEGEND:--*");
+		puts(">> 0 -- Seat is Available!");
+		puts(">> 1 -- Seat is Reserved!");
+		printf(" \t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\n", "Col-1", "Col-2", "Col-3", "Col-4", "Col-5", "Col-6");
+
+		printArray(airbusABusinessClass, sizOfArryAirbusB);
+		menu();
+		break;
+	case 3:
+		puts("*--LEGEND:--*");
+		puts(">> 0 -- Seat is Available!");
+		puts(">> 1 -- Seat is Reserved!");
+		printf(" \t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\n", "Col-1", "Col-2", "Col-3", "Col-4", "Col-5", "Col-6", "Col-7", "Col-8", "Col-9", "Col-10");
+
+		printArray(airbusAEconomyClass, sizOfArryAirbusE);
+		menu();
+		break;
+	case 4:
+		puts("*--LEGEND:--*");
+		puts(">> 0 -- Seat is Available!");
+		puts(">> 1 -- Seat is Reserved!");
+		printf(" \t%10s\t%10s\t%10s\t%10s\n", "Col-1", "Col-2", "Col-3", "Col-4");
+
+		printArray(boeingFirstClassFirstFloor, sizOfArryBoeingFFF);
+		menu();
+		break;
+	case 5:
+		puts("*--LEGEND:--*");
+		puts(">> 0 -- Seat is Available!");
+		puts(">> 1 -- Seat is Reserved!");
+		printf(" \t%10s\t%10s\t%10s\t%10s\n", "Col-1", "Col-2", "Col-3", "Col-4");
+
+		printArray(boeingFirstClassSecondFloor, sizOfArryBoeingFSF);
+		menu();
+		break;
+	case 6: 
+		puts("*--LEGEND:--*");
+		puts(">> 0 -- Seat is Available!");
+		puts(">> 1 -- Seat is Reserved!");
+		printf(" \t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\n", "Col-1", "Col-2", "Col-3", "Col-4", "Col-5", "Col-6");
+
+		printArray(boeingBusinessClass, sizOfArryBoeingB);
+		menu();
+		break;
+	case 7:
+		puts("*--LEGEND:--*");
+		puts(">> 0 -- Seat is Available!");
+		puts(">> 1 -- Seat is Reserved!");
+		printf(" \t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\t%10s\n", "Col-1", "Col-2", "Col-3", "Col-4", "Col-5", "Col-6", "Col-7", "Col-8", "Col-9", "Col-10");
+
+		printArray(boeingEconomyClass, sizOfArryBoeingE);
+		menu();
+		break;
+	case 9: menu();
+		break;
+	default:
+		exit(0);
+		break;
+	}
+}
+
+
