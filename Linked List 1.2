@@ -1,0 +1,148 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+#include "prototype.h"
+
+
+
+typedef struct Node Nodeptr;
+
+typedef struct Node {
+	int data;
+	Nodeptr *next;
+	Nodeptr *previous;
+
+}Nodeptr;
+
+Nodeptr * start;
+Nodeptr * end;
+
+void mainMenu() {
+
+	puts(">>-1-  Add to the Left");
+	puts(">>-2-  Add to the Right");
+	puts(">>-5-  Print");
+	puts(">>-66-  Expand Menu");
+	int x = 0;
+	scanf("%d", &x);
+
+	switch (x) {
+	case 1:	
+		addLeftSide();
+
+		break;
+	case 2:
+		addRightSide();
+
+		break;
+	case 5:
+
+		break;
+	case 66:
+
+		break;
+	}
+}
+
+
+void printNodes() {
+	Nodeptr;
+
+	if (start == NULL && end == NULL) {
+		puts("There is nothing here to print.");
+	}
+	else if (start == end) {
+		
+	}
+	else {
+		
+		while (next != NULL) {
+			printf("(%d,%d) ", ptr->key, ptr->data);
+			ptr = ptr->next;
+		}
+		printf(" ]");
+	}
+}
+
+//Adding to the left side
+void addLeftSide() {
+	Nodeptr * tempNode = (Nodeptr*)malloc(sizeof(Nodeptr));
+
+	if (start == NULL && end == NULL) {
+		puts("Add your desired Int");
+		scanf("%d", &tempNode->data);
+
+		start = tempNode;
+		end = tempNode;
+		start->next = NULL;
+		start->previous = NULL;
+	}
+	else {
+		puts("Add your desired Int");
+		scanf("%d", &tempNode->data);
+		start->previous = tempNode;
+		tempNode->next = start;
+		tempNode->previous = NULL;
+		start = tempNode;
+	}
+}
+
+//Adding to the right side
+void addRightSide() {
+	Nodeptr * tempNode = (Nodeptr*)malloc(sizeof(Nodeptr));
+
+
+	if (start == NULL && end == NULL) {
+		puts("Add your desired Int");
+		scanf("%d", tempNode->data);
+
+		start = tempNode;
+		end = tempNode;
+		start->next = NULL;
+		start->previous = NULL;
+	}
+	else {
+		puts("Add your desired Int");
+		scanf("%d", tempNode->data);
+		end->next = tempNode;
+		tempNode->previous = end;
+		tempNode->next = NULL;
+		end = tempNode;
+	} 
+}
+	
+//functions above
+
+//Prototype below
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+void mainMenu();
+
+void printNodes();
+
+void addLeftSide();
+
+void addRightSide();
+
+//Main below
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "prototype.h"
+
+int main() {
+	puts("--Project: Linked List--");
+	puts("\tProject By: Ramin Tajwanchi");
+	puts("Show me what you got!!");
+	mainMenu();
+
+
+	system("pause");
+
+}
