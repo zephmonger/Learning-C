@@ -1,0 +1,274 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+#include "prototype.h"
+
+
+typedef struct Node Nodeptr;
+
+typedef struct Node {
+	int data;
+	Nodeptr* next;
+	Nodeptr* previous;
+
+}Nodeptr;
+
+Nodeptr * start;
+Nodeptr * end;
+
+void mainMenu() {
+
+	puts(">>-1-  Add to the Left");
+	puts(">>-2-  Add to the Right");
+	puts(">>-5-  Print");
+	puts(">>-66-  Expand Menu");
+	int x = 0;
+	scanf("%d", &x);
+
+	switch (x) {
+	case 1:	
+			addLeftSide();
+
+		break;
+	case 2:
+			addRightSide();
+
+		break;
+	case 5:
+			printForwardNodes();
+		break;
+	case 66:
+		menu();
+		break;
+	}
+}
+
+//Printing All Dem Nodes
+void printForwardNodes() {
+	
+
+
+	if (start == NULL && end == NULL) {
+		puts("There is nothing here to print.");
+	}
+	else if (start == end) {
+		printf("NuLL|<<[ - ");
+		printf("%d", start->data);
+		printf(" - ]>>|NuLL\n");
+	}
+
+	else {
+		Nodeptr* current;
+		current = start;
+		printf("NuLL|<<[ - ");
+
+		while (current != NULL)
+		{
+			printf("%d -- ", current->data);
+			current = current->next;
+		}
+		printf(" - ]>>|NuLL\n");
+	}
+	mainMenu();
+}
+
+//Adding to the left side
+void addLeftSide() {
+	Nodeptr * tempNode = (Nodeptr*)malloc(sizeof(Nodeptr));
+
+	if (start == NULL && end == NULL) {
+		puts("Add your desired Int");
+		scanf("%d", &tempNode->data);
+
+		start = tempNode;
+		end = tempNode;
+		start->next = NULL;
+		start->previous = NULL;
+		printForwardNodes();
+		mainMenu();
+	}
+	else {
+		puts("Add your desired Int");
+		scanf("%d", &tempNode->data);
+		start->previous = tempNode;
+		tempNode->next = start;
+		tempNode->previous = NULL;
+		start = tempNode;
+		printForwardNodes();
+		mainMenu();
+	}
+}
+
+//Adding to the right side
+void addRightSide() {
+	Nodeptr * tempNode = (Nodeptr*)malloc(sizeof(Nodeptr));
+
+
+	if (start == NULL && end == NULL) {
+		puts("Add your desired Int");
+		scanf("%d", &tempNode->data);
+
+		end = tempNode;
+		start = tempNode;
+		start->previous = NULL;
+		start->next = NULL;
+		printForwardNodes();
+
+	}
+	else {
+		puts("Add your desired Int");
+		scanf("%d", &tempNode->data);
+		end->next = tempNode;
+		tempNode->previous = end;
+		tempNode->next = NULL;
+		end = tempNode;
+		printForwardNodes();
+	} 
+}
+
+//Expanded menu options
+void menu() {
+	puts("");
+	puts("\t\Hello, please select one from the following");
+	puts("\t\t1 - Add a node to the left");
+	puts("\t\t2 - add a node to the right");
+	puts("\t\t3 - add a node to the middle after a node");
+	puts("\t\t4 - add a node to the middle before a node");
+	puts("\t\t5 - printf the list forward");
+	puts("\t\t6 - printf the list backward");
+	puts("\t\t7 - delete a node (start)");
+	puts("\t\t8 - delete a node (end)");
+	puts("\t\t9 - delete any node");
+	puts("\t\t10 - delete all nodes");
+	puts("\t\t11 - print odd numbers");
+	puts("\t\t12 - print even numbers");
+	puts("? :  ");
+	puts("\t\t0- exit\n");
+	int xx = 0;
+	scanf("%d", &xx);
+
+	switch (xx) {
+
+	case 1:
+		addLeftSide();
+		break;
+	case 2:
+		addRightSide();
+		break;
+	case 3:
+		printForwardNodes();
+		break;
+	case 4:
+
+		break;
+	case 5:
+
+		break;
+	case 6:
+
+		break;
+	case 7:
+
+		break;
+	case 8:
+
+		break;
+	case 9:
+
+		break;
+	case 10:
+
+		break;
+	case 11:
+
+		break;
+	case 12:
+
+		break;
+	case 13:
+
+		break;
+	default:
+		exit(0);
+		break;
+	}
+
+
+
+
+
+}
+	
+//Add after specified Node
+void addAfter() {
+
+
+
+}
+
+//Add before specified Node
+void addBefore() {
+
+}
+
+//puts("");
+//puts("\t\Hello, please select one from the following");
+//puts("\t\t1 - Add a node to the left");
+//puts("\t\t2 - add a node to the right");
+//puts("\t\t3 - add a node to the middle after a node");
+//puts("\t\t4 - add a node to the middle before a node");
+//puts("\t\t5 - printf the list forward");
+//puts("\t\t6 - printf the list backward");
+//puts("\t\t7 - delete a node (start)");
+//puts("\t\t8 - delete a node (end)");
+//puts("\t\t9 - delete any node");
+//puts("\t\t10 - delete all nodes");
+//puts("\t\t11 - print odd numbers");
+//puts("\t\t12 - print even numbers");
+
+
+///////////////////functions above
+
+////////////////////////Prototypes below
+#pragma once
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+void mainMenu();
+
+void printForwardNodes();
+
+void printBackwardNodes();
+
+void addLeftSide();
+
+void addRightSide();
+
+void addAfter();
+
+void addBefore();
+
+
+//////////////
+//Main below
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "prototype.h"
+
+int main() {
+	puts("--Project: Linked List--");
+	puts("\tProject By: Ramin Tajwanchi");
+	puts("Show me what you got!!");
+	puts("");
+	mainMenu();
+
+
+	system("pause");
+
+}
