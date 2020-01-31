@@ -1,0 +1,555 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdbool.h>
+#include "prototype.h"
+
+typedef struct Node Nodeptr;
+
+typedef struct Node {
+	int data;
+	Nodeptr* next;
+	Nodeptr* previous;
+
+}Nodeptr;
+
+Nodeptr* start;
+Nodeptr* end;
+
+void mainMenu() {
+
+	int x = 0;
+	do
+	{
+		puts("");
+		puts(">> - 1 -  Add to the Left");
+		puts(">> - 2 -  Add to the Right");
+		puts(">> - 4 -  Print Forwards");
+		puts(">> - 5 -  Print Backwards");
+		puts(">> - 66 -  Expand Menu");
+		puts(">>>>>>>>>-----<<<<<<<<<<");
+		puts(">> - 0 -  Exit Linked List");
+		scanf("%d", &x);
+
+		switch (x) {
+		case 1:
+			addLeftSide();
+			break;
+		case 2:
+			addRightSide();
+			break;
+		case 4:
+			printForwardNodes();
+			break;
+		case 5:
+			printNodesBackwards();
+			break;
+		case 66:
+			menu();
+			break;
+		case 0:   if (x == 0) {
+			exit(0);
+		}
+				  break;
+		default:
+			puts("Please enter an existing Menu Option");
+			puts("");
+			break;
+		}
+	} while (x != 0);
+}
+
+//Printing All Dem Nodes "Forward"
+void printForwardNodes() {
+
+	if (start == NULL && end == NULL) {
+		puts("There is nothing here to print.");
+	}
+	else if (start == end) {
+		printf("NuLL|<<[ - ");
+		printf("%d", start->data);
+		printf(" - ]>>|NuLL\n");
+	}
+	else {
+		Nodeptr* current = start;
+		printf("NuLL|<<[ - ");
+
+		while (current != NULL)
+		{
+			printf("%d - ", current->data);
+			current = current->next;
+		}
+		puts(" ]>>|NuLL\n");
+	} mainMenu();
+}
+
+//Printing All Dem Nodes W/O Menu at the end
+void printForwardNodes2() {
+	if (start == NULL && end == NULL) {
+		puts("There is nothing here to print.");
+	}
+	else if (start == end) {
+		printf("NuLL|<<[ - ");
+		printf("%d", start->data);
+		printf(" - ]>>|NuLL\n");
+	}
+	else {
+		Nodeptr* current = start;
+	
+		printf("NuLL|<<[ - ");
+
+		while (current != NULL)
+		{
+			printf("%d - ", current->data);
+			current = current->next;
+		}
+		printf(" ]>>|NuLL\n");
+		puts("");
+	}
+}
+
+//Printing All Dem Nodes "Backward"
+void printNodesBackwards() {
+	if (start == NULL && end == NULL) {
+		puts("The list is empty");
+	}
+	else if (start == end) {
+		printf("NuLL|<<[ - ");
+		printf("%d", start->data);
+		printf(" - ]>>|NuLL\n");
+		return;
+	}	
+	else
+	{
+		Nodeptr* current;
+		current = end;
+		printf("NuLL|<<[ - ");
+		while (current != NULL)
+		{
+			printf("%d -- ", current->data);
+			current = current->previous;
+		}
+		printf(" ]>>|NuLL\n");
+		return;
+	}mainMenu();
+}
+
+//Adding to the left side
+void addLeftSide() {
+	Nodeptr* tempNode = (Nodeptr*)malloc(sizeof(Nodeptr));
+
+	if (start == NULL && end == NULL) {
+		puts("The list is currently empty");
+		puts("Enter the Int you wish to add");
+		scanf("%d", &tempNode->data);
+
+		start = tempNode;
+		end = tempNode;
+		start->next = NULL;
+		start->previous = NULL;
+		printForwardNodes();
+		mainMenu();
+	}
+	else {
+		puts("Add your desired Int");
+		scanf("%d", &tempNode->data);
+		start->previous = tempNode;
+		tempNode->next = start;
+		tempNode->previous = NULL;
+		start = tempNode;
+		printForwardNodes();
+		mainMenu();
+	}
+}
+
+//Adding to the right side
+void addRightSide() {
+	Nodeptr* tempNode = (Nodeptr*)malloc(sizeof(Nodeptr));
+
+	if (start == NULL && end == NULL) {
+		puts("The list is currently empty");
+		puts("Enter the Int you wish to add");
+		scanf("%d", &tempNode->data);
+
+		end = tempNode;
+		start = tempNode;
+		start->previous = NULL;
+		start->next = NULL;
+		printForwardNodes();
+	}
+	else {
+		puts("Add your desired Int");
+		scanf("%d", &tempNode->data);
+		end->next = tempNode;
+		tempNode->previous = end;
+		tempNode->next = NULL;
+		end = tempNode;
+		printForwardNodes();
+	}
+}
+
+//Expanded menu options
+void menu() {
+	puts("");
+	puts("\t\t Hello, please select one from the following");
+	puts("\t\t1 - Add a node to the Left");
+	puts("\t\t2 - Add a node to the Right");
+	puts("\t\t3 - Add a node After a specified");
+	puts("\t\t4 - Add a node Before a specified");
+	puts("\t\t5 - Print full list forward");
+	puts("\t\t6 - Print full list Backward");
+	puts("\t\t7 - Delete First Node");
+	puts("\t\t8 - Delete Last Node");
+	puts("\t\t9 - Delete any node");
+	puts("\t\t10 - Delete all the nodes");
+	puts("\t\t11 - Print odd numbers");
+	puts("\t\t12 - Print even numbers");
+	puts("\t\t0- exit\n");
+	puts("");
+	printForwardNodes2();
+	puts("");
+	int xx = 0;
+	scanf("%d", &xx);
+
+
+	switch (xx) {
+
+	case 1:
+		addLeftSide();
+		break;
+	case 2:
+		addRightSide();
+		break;
+	case 3:
+		addAfter();
+		break;
+	case 4:
+		addBefore();
+		break;
+	case 5:
+		printForwardNodes();
+		break;
+	case 6:
+		printNodesBackwards();
+		break;
+	case 7:
+		deleteFirstNode();
+		break;
+	case 8:
+		deleteLastNode();
+		break;
+	case 9:
+		deleteSpecified();
+		break;
+	case 10:
+		deleteAll();
+		break;
+	case 11:
+		printOdd();
+		break;
+	case 12:
+		printEven();
+		break;
+	default:
+		exit(0);
+		break;
+	}
+}
+
+//Print all Odd numbers
+void printOdd() {
+	if (start == NULL && end == NULL) {
+		puts("The list is empty");
+	}
+	else {
+		Nodeptr* current;
+		current = start;
+		printf("NuLL|<<[ - ");
+
+		while (current != NULL) {
+			if (current->data % 2 == 1) {
+				printf("%d -- ", current->data);
+				current = current->next;
+			}
+			else {
+				current = current->next;
+			}
+		}
+		printf(" ]>>|NuLL\n");
+	}mainMenu();
+}
+
+//Print all Even numbers
+void printEven() {
+	if (start == NULL && end == NULL) {
+		puts("The list is empty");
+	}
+	else {
+		Nodeptr* current;
+		current = start;
+		printf("NuLL|<<[ - ");
+
+		while (current != NULL) {
+			if (current->data % 2 == 0) {
+				printf("%d -- ", current->data);
+				current = current->next;
+			}
+			else {
+				current = current->next;
+			}
+		}
+		printf(" ]>>|NuLL\n");
+	}mainMenu();
+}
+
+//Add After a specified Node
+void addAfter() {
+	Nodeptr* new = (Nodeptr*)malloc(sizeof(Nodeptr));
+	Nodeptr* itirator;
+	Nodeptr* currentNext;
+
+	if (start == NULL && end == NULL) {
+		addLeftSide();
+	}
+	else {
+		int lookingFor;
+		itirator = start;
+
+		puts("After which existing Node?");
+		scanf("%d", &lookingFor);
+		puts("What is the int you wish to add?");
+
+		scanf("%d", &new->data);
+
+		while (itirator->data != NULL) {
+			if (itirator->data == lookingFor) {
+
+				currentNext = itirator->next;
+				itirator->next = new;
+				new->previous = itirator;
+				new->next = currentNext;
+				currentNext->previous = new;
+				printForwardNodes();
+			}
+			else {
+				itirator = itirator->next;
+			}
+
+		}
+	}
+}
+
+//Add Before a specified Node
+void addBefore() {
+	Nodeptr* new = (Nodeptr*)malloc(sizeof(Nodeptr));
+	Nodeptr* itirator;
+	Nodeptr* currentLast;
+
+	if (start == NULL && end == NULL) {
+		addRightSide();
+	}
+	else {
+		int lookingFor;
+		itirator = end;
+
+		puts("After which existing Node?");
+		scanf("%d", &lookingFor);
+		puts("What is the int you wish to add?");
+		scanf("%d", &new->data);
+		while (itirator->data != NULL) {
+			if (lookingFor == itirator->data) {
+
+				currentLast = itirator->previous;
+				itirator->previous = new;
+				new->next = itirator;
+				new->previous = currentLast;
+				currentLast->next = new;
+				printForwardNodes();
+			}
+			else {
+				itirator = itirator->previous;
+			}
+		}
+	}
+}
+
+//Delete Last Node
+void deleteLastNode() {
+	
+	if (start == NULL && end == NULL) {
+		addRightSide();
+	}
+	if (start == end) {
+		free(start);
+		start = NULL;
+		end = NULL;
+	}
+	else {
+		Nodeptr* itirator;
+		Nodeptr* currentLast;
+
+		itirator = end;
+		end = end->previous;
+		end->next = NULL;
+		free(itirator);
+	}	printForwardNodes();
+}
+
+//Delete First Node
+void deleteFirstNode() {
+	if (start == NULL && end == NULL) {
+		addRightSide();
+	}
+	else if (start == end) {
+		free(start);
+		start = NULL;
+		end = NULL;
+	}
+	else {
+		Nodeptr* itirator;
+
+		itirator = start;
+		start = start->next;
+		start->previous = NULL;
+		free(itirator);
+	}	printForwardNodes();
+}
+
+//Delete a Specified Node
+void deleteSpecified() {
+	if (start == NULL && end == NULL) {
+		addRightSide();
+	}
+	 else if (start == end) {
+		free(start);
+		start = NULL;
+		end = NULL;
+	}
+	 else {
+		Nodeptr* itirator = end;		
+		int lookingFor;
+	
+		puts("Which Node Do you wish to delete?");
+		scanf("%d", &lookingFor);
+
+		while (itirator->data != NULL) {			
+			if (lookingFor == itirator->data) {
+				Nodeptr* currentLast = itirator->previous;
+				Nodeptr* currentNext = itirator->next;
+
+				currentLast->next = currentNext;
+				currentNext->previous = currentLast;
+				itirator->next = NULL;
+				itirator->previous = NULL;
+				free(itirator);
+				return;
+			}
+			else {
+				itirator = itirator->previous;
+			}
+		}
+	 }printForwardNodes();
+}
+
+//Delete All Nodes
+void deleteAll() {
+	if (start == NULL && end == NULL) {
+		addRightSide();
+	}
+	else if (start == end) {
+		free(start);
+		start = NULL;
+		end = NULL;
+	}
+	else {
+		
+		while (start != NULL && end != NULL) {
+			
+			deleteLastNode1();
+		}
+	}mainMenu();
+}
+
+//Delete Last Node With out Menu
+void deleteLastNode1() {
+
+	if (start == NULL && end == NULL) {
+		addRightSide();
+	}
+	if (start == end) {
+		free(start);
+		start = NULL;
+		end = NULL;
+	}
+	else {
+		Nodeptr* itirator;
+		Nodeptr* currentLast;
+
+		itirator = end;
+		end = end->previous;
+		end->next = NULL;
+		free(itirator);
+	}
+}
+
+//////////Functions above
+
+//////Prototype Below
+
+#pragma once
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void mainMenu();
+
+void menu();
+
+void printForwardNodes();//Print Nodes with menu
+
+void printNodesBackwards();
+
+void addLeftSide();
+
+void addRightSide();
+
+void printOdd();
+
+void printEven();
+
+void addBefore();
+
+void addAfter();
+
+void deleteLastNode();
+
+void deleteFirstNode();
+
+void deleteSpecified();
+
+void deleteAll();
+
+void printForwardNodes2();//Print Nodes without giving menu
+
+void deleteLastNode1();
+
+
+////////Main below
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "prototype.h"
+
+int main() {
+	puts("--Project: Linked List--");
+	puts("\tProject By: >>- Ramin Tajwanchi -<<");
+	puts("\t\tShow me what you got!!");
+	mainMenu();
+
+	system("pause");
+	return(0);
+}
